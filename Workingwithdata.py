@@ -1,3 +1,4 @@
+'''
 #Problem 1:
 x = [0, 1, [2]]
 x[2][0] = 3
@@ -15,8 +16,8 @@ print(x)
 
 
 #Problem 3: What happens when the above sum function is called with a list of strings? Can you make your sum function work for a list of strings as well.
-sum(["hello", "world"])
-sum(["aa", "bb", "cc"])
+#sum(["hello", "world"])
+#sum(["aa", "bb", "cc"])
 
 ab = "".join(["hello", "world"]) #We cannot modify sum function since it is deals with intergers
 print(ab)
@@ -130,10 +131,58 @@ def unique(values, key=None):
     result = set()
     distinctvalues = []      
     for i in values:
-        value = key(i) if key else i 
+        if key:
+            value = key(i)
         if value not in result:
             result.add(value) 
             distinctvalues.append(i)
-    return print(distinctvalues) #{'python', 'java'}
+    return print(distinctvalues) #['python', 'java']
 
 unique(["python", "java", "Python", "Java"], key=lambda s: s.lower())
+
+
+#Problem 16: Write a function extsort to sort a list of files based on extension.
+
+def extsort(files):
+    files.sort(key=lambda x:[x.split('.')[-1]])
+    return print(files)
+extsort(['a.c', 'a.py', 'b.py', 'bar.txt', 'foo.txt', 'x.c'])
+#['a.c', 'x.c', 'a.py', 'b.py', 'bar.txt', 'foo.txt']
+
+#Problem 24: Provide an implementation for zip function using list comprehensions.
+k = [x for x in zip([1, 2, 3], ["a", "b", "c"])]
+print(k)
+
+#Problem 25: Python provides a built-in function map that applies a function to each element of a list.
+#Provide an implementation for map using list comprehensions.
+
+def square(x): return x * x
+result = map(square, range(5))
+print(list(result)) #[0, 1, 4, 9, 16]
+
+#Problem 26: Python provides a built-in function filter(f, a) that returns items of the list a for which f(item) returns true.
+#Provide an implementation for filter using list comprehensions.
+
+def even(x): return x %2 == 0
+result=filter(even, range(10))
+print(list(result)) #[0, 2, 4, 6, 8]
+
+
+#Problem 27: Write a function triplets that takes a number n as argument and returns a list of triplets such that sum of first two elements of the triplet equals the third element using numbers below n.
+#Please note that (a, b, c) and (b, a, c) represent same triplet.
+def triplets(n):
+    result = [(a,b,c) for a in range(1,n) for b in range(a,n) for c in range(b,n) if a+b==c and b+a == c]
+    return print(result)
+triplets(5)
+
+#Problem 29: Write a function array to create an 2-dimensional array.
+#The function should take both dimensions as arguments. Value of each element can be initialized to None
+def array(a,b):
+    return [[None for _ in range(b)] for _ in range(a)]
+a = array(2, 3)
+print(a) #[[None, None, None], [None, None, None]]
+a[0][0]=5
+for i in a:
+    print(i,end=" ") #[[5, None, None], [None, None, None]]
+'''
+
