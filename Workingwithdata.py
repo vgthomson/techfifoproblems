@@ -1,4 +1,4 @@
-
+'''
 #Problem 1:
 x = [0, 1, [2]]
 x[2][0] = 3
@@ -185,4 +185,5 @@ a[0][0]=5
 for i in a:
     print(i,end=" ") #[[5, None, None], [None, None, None]]
 
+'''
 
